@@ -7,7 +7,11 @@ import com.ps.netty.iso8583.services.models.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.UUID;
 
 @RestController
 public class MainController {
@@ -27,12 +31,12 @@ public class MainController {
         return customer;
     }
 
-    @RequestMapping(value = "/initiate/transation",method = RequestMethod.POST,consumes = "application/json",produces = "application/json")
-    public Response initiateTransaction(@RequestBody ImpsTransactionReq request){
+    @RequestMapping(value = "/initiate/transation",method = RequestMethod.POST,consumes = "application/json")
+    public ResponseEntity<Response> initiateTransaction(@RequestBody ImpsTransactionReq request){
 
         logger.info("Request: >>>>>>> {}",request.toString());
-        Response response = new Response("202","111111");
+        Response response = new Response("202", UUID.randomUUID().toString().toUpperCase());
         msgHandler.handleRequest(request);
-        return response;
+        return new ResponseEntity<Response>(response, HttpStatus.ACCEPTED);
     }
 }

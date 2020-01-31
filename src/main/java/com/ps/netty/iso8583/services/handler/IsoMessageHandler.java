@@ -19,7 +19,8 @@ public class IsoMessageHandler {
     Iso8583Client<IsoMessage> isoClient;
     @Autowired
     IsoMessageBuilder messageBuilder;
-
+    @Autowired
+    MessageListener messageListener;
     @Autowired
     public IsoMessageHandler(Iso8583Client<IsoMessage> isoClient) {
         this.isoClient = isoClient;
@@ -32,6 +33,8 @@ public class IsoMessageHandler {
         if (isoClient.isConnected()){
             LOGGER.info("RRN: [{}] - ORIGINAL MESSAGE: [{}]",referenceId,or_msg.getObjectValue(DE120));
             isoClient.sendAsync(or_msg);
+
+            isoClient.addMessageListener(messageListener);
         }
 
     }

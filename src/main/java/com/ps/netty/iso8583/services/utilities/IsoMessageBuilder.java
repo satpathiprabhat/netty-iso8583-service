@@ -36,7 +36,6 @@ public class IsoMessageBuilder {
 
     public IsoMessage buildORMsg (ImpsTransactionReq request){
 
-        LOGGER.info("Client object: [{}]",client.toString());
         IsoMessage msg = client.getIsoMessageFactory().newMessage(0x200);
         String beneficiaryNbin = "9229";
         StringBuilder sb = new StringBuilder();

@@ -1,5 +1,6 @@
 package com.ps.netty.iso8583.services.models;
 
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.io.Serializable;

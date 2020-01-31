@@ -13,6 +13,22 @@ public class Response implements Serializable {
         this.referenceNumber = referenceNumber;
     }
 
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getReferenceNumber() {
+        return referenceNumber;
+    }
+
+    public void setReferenceNumber(String referenceNumber) {
+        this.referenceNumber = referenceNumber;
+    }
+
     @Override
     public String toString() {
         return "Response{" +
