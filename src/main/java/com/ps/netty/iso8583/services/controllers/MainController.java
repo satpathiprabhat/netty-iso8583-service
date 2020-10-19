@@ -20,6 +20,12 @@ public class MainController {
 
     @Autowired
     IsoMessageHandler msgHandler;
+    
+    /**
+     * its only for test
+     * @param id
+     * @return
+     */
     @RequestMapping(value = "/findbyid",method = RequestMethod.GET)
     public Customer findById(@RequestParam String id){
         Customer customer = new Customer();
