@@ -45,4 +45,10 @@ public class MainController {
         msgHandler.handleRequest(request);
         return new ResponseEntity<Response>(response, HttpStatus.ACCEPTED);
     }
+    
+    
+    @RequestMapping(value = "/health",method = RequestMethod.GET)
+    public String healthCheck(){
+        return "service alive";
+    }
 }
